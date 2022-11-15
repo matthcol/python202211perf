@@ -1,30 +1,12 @@
-from functools import total_ordering
+from dataclasses import dataclass
+from typing import Optional
 import math
 
-@total_ordering
+@dataclass(order=True)
 class Point:
-#class Point(object):
-    
-    def __init__(self, name=None, x=0, y=0, **kwargs):
-        print("Init Point")
-        self.name = name
-        self.x = x
-        self.y = y
-
-    def __repr__(self):
-        return f"{self.name}({self.x},{self.y})"
-
-    def __eq__(self, other):
-        if not isinstance(other, Point):
-            return NotImplemented
-        return (self.name, self.x, self.y) \
-            == (other.name, other.x, other.y)
-
-    def __lt__(self, other):
-        if not isinstance(other, Point):
-            return NotImplemented
-        return (self.name, self.x, self.y) \
-            < (other.name, other.x, other.y)
+    name: Optional[str] = None
+    x: int = 0
+    y: int = 0
 
     # p1 - p2 -> distance 
     def __sub__(self, other):

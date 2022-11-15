@@ -90,10 +90,10 @@ def test_constructor(pointA):
     assert pointA.y == 3
 
 def test_repr(pointA):
-    assert repr(pointA) == "A(2,3)"
+    assert repr(pointA) == "Point(name='A', x=2, y=3)"
 
 def test_str(pointA):
-    assert str(pointA) == "A(2,3)"
+    assert str(pointA) == "Point(name='A', x=2, y=3)"
 
 
 def test_sub(pointA):
