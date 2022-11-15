@@ -113,3 +113,16 @@ def test_iadd_ko(pointA):
     with pytest.raises(ValueError) as excInfo:
         pointA += "Toulouse"
     assert str(excInfo.value) == "too many values to unpack (expected 2)"
+
+
+def test_fromCoords():
+    p = Point.fromCoords(5,7)
+    assert type(p) == Point
+    assert p.x == 5
+    assert p.y == 7
+
+def test_pointFromCoords():
+    p = Point.pointFromCoords(5,7)
+    assert type(p) == Point
+    assert p.x == 5
+    assert p.y == 7
