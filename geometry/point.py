@@ -4,6 +4,8 @@ import math
 @total_ordering
 class Point:
 #class Point(object):
+
+    __slots__ = ['name', 'x', 'y']
     
     def __init__(self, name=None, x=0, y=0, **kwargs):
         print("Init Point")
