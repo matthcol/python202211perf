@@ -52,12 +52,36 @@ def test_hash():
     with pytest.raises(TypeError):
         hash(p)
 
-def test_gt():
-    p1 = Point()
-    p2 = Point()
-    # by default NotImplemented => TypeError
-    with pytest.raises(TypeError):
-        p1 < p2
+# NB: by default NotImplemented => TypeError
+# def test_gt():
+#     p1 = Point()
+#     p2 = Point()
+#     with pytest.raises(TypeError):
+#         p1 < p2
+
+
+def test_lt_ok(pointA):
+    assert pointA < Point("B")
+
+def test_lt_ko(pointA):
+    assert not(pointA < pointA)
+
+def test_gt_ok(pointA):
+    assert  Point("B") > pointA
+
+# by default with only __eq__ and __lt__
+# TypeError: '<=' not supported between instance
+# ok: @total_ordering
+def test_le_ok(pointA):
+    assert pointA <= Point("B")
+
+# by default with only __eq__ and __lt__
+# TypeError: '>=' not supported between instance
+# ok: @total_ordering
+def test_ge_ok(pointA):
+    assert  Point("B") >= pointA
+
+
 
 
 def test_constructor(pointA):

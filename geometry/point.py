@@ -1,3 +1,6 @@
+from functools import total_ordering
+
+@total_ordering
 class Point:
 #class Point(object):
     
@@ -15,3 +18,10 @@ class Point:
         return (self.name, self.x, self.y) \
             == (other.name, other.x, other.y)
 
+
+    def __lt__(self, other):
+        if not isinstance(other, Point):
+            return NotImplemented
+        return (self.name, self.x, self.y) \
+            < (other.name, other.x, other.y)
+        
