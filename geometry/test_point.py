@@ -96,3 +96,20 @@ def test_str(pointA):
     assert str(pointA) == "A(2,3)"
 
 
+def test_sub(pointA):
+    pointB = Point("B", pointA.x + 4, pointA.y - 3)
+    assert (pointA - pointB) == 5
+    assert (pointB - pointA) == 5
+
+def test_iadd(pointA):
+    pointAref = pointA
+    pointA += 4, -7
+    # true inplace
+    assert pointA is pointAref
+    assert pointA.x == 6
+    assert pointA.y == -4
+
+def test_iadd_ko(pointA):
+    with pytest.raises(ValueError) as excInfo:
+        pointA += "Toulouse"
+    assert str(excInfo.value) == "too many values to unpack (expected 2)"

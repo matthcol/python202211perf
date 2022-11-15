@@ -1,4 +1,5 @@
 from functools import total_ordering
+import math
 
 @total_ordering
 class Point:
@@ -24,4 +25,19 @@ class Point:
             return NotImplemented
         return (self.name, self.x, self.y) \
             < (other.name, other.x, other.y)
-        
+
+
+    # p1 - p2 -> distance 
+    def __sub__(self, other):
+        if not isinstance(other, Point):
+            return NotImplemented
+        return math.hypot(self.x - other.x, self.y - other.y)
+
+    
+    # p += (3,4)
+    def __iadd__(self, vector):
+        dx, dy = vector
+        self.x += dx
+        self.y += dy
+        return self
+    
