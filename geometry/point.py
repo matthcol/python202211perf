@@ -33,30 +33,22 @@ class Point:
     def pointFromCoords(x, y):
         return Point(x=x, y=y)
 
-
+@dataclass(eq=False)
 class WeightedPoint(Point):
 
-    def __init__(self, name=None, x=0, y=0, weight=0.0, **kwargs):
-        print("Init WeightedPoint")
-        super().__init__(name=name, x=x, y=y, **kwargs)
-        self.weight = weight
+    weight: float = 0.0
 
 
+@dataclass
 class ColoredPoint(Point):
 
-    def __init__(self, name=None, x=0, y=0, color='red', **kwargs):
-        print("Init ColoredPoint")
-        super().__init__(name=name, x=x, y=y, **kwargs)
-        self.color = color
+    color: str = 'red'
 
 
+@dataclass
 class WeightedColoredPoint(WeightedPoint, ColoredPoint):
-
-    def __init__(self, name=None, x=0, y=0, weight=0, color='red', **kwargs):
-        print("Init WeigtedColoredPoint")
-        # WeightedPoint.__init__(self, name, x, y, weight)
-        # ColoredPoint.__init__(self, name, x, y, color)
-        super().__init__(name=name, x=x, y=y, weight=weight, color=color, **kwargs)
+    
+    pass
 
 
 # NB: MRO = Method Resolution Order
